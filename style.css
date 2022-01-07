@@ -85,7 +85,7 @@ a{
     color: #584c5e;
   }
   .cd-section p {
-    margin: 1em auto 0;
+    margin: 1em auto 1em;
     line-height: 1.6;
     width: 90%;
     max-width: 680px;
