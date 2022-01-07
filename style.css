@@ -11,6 +11,21 @@ body {
     font-family: "Lato", sans-serif;
 }
   
+#CV{
+  color: rgba(234, 242, 227, 0.6);
+  font-size: 3.4rem;
+  display: block;
+  margin: 14px;
+}
+
+#CV:hover {
+  text-decoration:underline;
+}
+
+a{
+  text-decoration: none;
+}
+
   .sidenav {
     height: 100%;
     width: var(--sidenavsize);
