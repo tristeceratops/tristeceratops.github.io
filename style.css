@@ -47,13 +47,12 @@ a{
     display: block;
   }
 
-  .sidenav img{
+  #btnSect1{
     padding: 0.62vh 0.42vw 0.62vh 0.83vw;
     margin: 30% 0 30% 0;
     display: block;
     width: 80%;
   }
-  
   .sidenav a:hover {
     color: #f1f1f1;
     background-color: #3B3355;

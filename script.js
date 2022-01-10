@@ -20,7 +20,6 @@ for (let index = 0; index < btnSectArray.length; index++) {
     btnSectArray[index].style.cursor="pointer";
     btnSectArray[index].addEventListener("click",function(){
         SectArray[index].scrollIntoView({behavior: "smooth"});
-        console.log(SectArray[index].id);
     })
     
 }
