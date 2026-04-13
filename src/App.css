@@ -1,33 +1,126 @@
+:root {
+  --conic-bg: #101010;
+  --conic-ray-green: #44FF00;
+  --conic-ray-purple: #b701ff;
+  --conic-motion-duration: 24s;
+  --conic-rotation: 0deg;
+  --label-gradient-angle: 145deg;
+  --ray-green-center: 108deg;
+  --ray-purple-center: 294deg;
+  --ray-green-width: 1deg;
+  --ray-purple-width: 1deg;
+  --ray-background-separation: 35deg;
+}
+
 #root {
   width: 100%;
 }
 
-.app {
+.welcomepage {
   position: relative;
   width: 100%;
   min-height: 100svh;
   overflow: hidden;
-  cursor: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
 
+.welcomepage-background {
+  position: absolute;
+  inset: 0;
+  background: var(--conic-bg);
 }
 
 .conic-ray-background {
   position: absolute;
   inset: 0;
-  --ray-angle: 180deg;
-  --ray-color: hsl(var(--ray-angle) 100% 50%);
 }
 
 .conic-ray-background__gradient {
+  position: relative;
   width: 100%;
   height: 100%;
   background-image: conic-gradient(
-    from calc(var(--ray-angle) - 181.5deg),
-    #000000 148deg 152deg,
-    var(--ray-color) 180deg 183deg,
-    #000000 205deg 208deg
+    from var(--conic-rotation),
+    var(--conic-bg)
+      0deg calc(var(--ray-green-center) - var(--ray-green-width) * 0.5 - var(--ray-background-separation)),
+    var(--conic-ray-green)
+      calc(var(--ray-green-center) - var(--ray-green-width) * 0.5)
+      calc(var(--ray-green-center) + var(--ray-green-width) * 0.5),
+    var(--conic-bg)
+      calc(var(--ray-green-center) + var(--ray-green-width) * 0.5 + var(--ray-background-separation) - 25deg)
+      calc(var(--ray-purple-center) - var(--ray-purple-width) * 0.5 - var(--ray-background-separation)),
+    var(--conic-ray-purple)
+      calc(var(--ray-purple-center) - var(--ray-purple-width) * 0.5)
+      calc(var(--ray-purple-center) + var(--ray-purple-width) * 0.5),
+    var(--conic-bg) 
+		calc(var(--ray-purple-center) + var(--ray-purple-width) * 0.5 + var(--ray-background-separation) - 21deg) 
+		360deg
   );
   background-repeat: no-repeat;
   background-position: center;
   background-size: 160vmax 160vmax;
+  animation: conic-rotate var(--conic-motion-duration) linear infinite;
+}
+
+.welcome-text-label {
+  position: relative;
+  z-index: 1;
+  width: 100%;
+  margin: 0;
+  text-align: center;
+  font-size: clamp(3rem, 6vw, 8rem);
+  font-weight: 700;
+  font-family: var(--font-glitch);
+  line-height: 1.1;
+  -webkit-text-stroke: 2px #ffffff;
+  background-image: linear-gradient(
+    var(--label-gradient-angle),
+    var(--conic-ray-green) 0%,
+    var(--conic-ray-green) 45%,
+    var(--conic-ray-purple) 55%,
+    var(--conic-ray-purple) 100%
+  );
+  background-clip: text;
+  -webkit-background-clip: text;
+  color: transparent;
+  -webkit-text-fill-color: transparent;
+  animation: label-gradient-rotate var(--conic-motion-duration) linear infinite;
+}
+
+@property --conic-rotation {
+  syntax: '<angle>';
+  inherits: false;
+  initial-value: 0deg;
+}
+
+@property --label-gradient-angle {
+  syntax: '<angle>';
+  inherits: false;
+  initial-value: 145deg;
+}
+
+@property --ray-background-separation {
+  syntax: '<angle>';
+  inherits: false;
+  initial-value: 35deg;
+}
+
+@keyframes conic-rotate {
+  from {
+    --conic-rotation: 0deg;
+  }
+  to {
+    --conic-rotation: 360deg;
+  }
+}
+
+@keyframes label-gradient-rotate {
+  from {
+    --label-gradient-angle: 145deg;
+  }
+  to {
+    --label-gradient-angle: 505deg;
+  }
 }

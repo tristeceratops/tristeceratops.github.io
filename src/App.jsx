@@ -1,12 +1,10 @@
 import './App.css'
-import ConicRayBackground from './ConicRayBackground'
+import WelcomePage from './WelcomePage/WelcomePageComponent'
 
 function App() {
 
   return (
-  <main className="app">
-    <ConicRayBackground />
-  </main>
+	<WelcomePage/>
   )
 }
 export default App
