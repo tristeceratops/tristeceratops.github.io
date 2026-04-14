@@ -1,10 +1,13 @@
 import './App.css'
+import { LanguageProvider } from './i18n/LanguageContext'
 import WelcomePage from './WelcomePage/WelcomePageComponent'
 
 function App() {
 
   return (
-	<WelcomePage/>
+  <LanguageProvider>
+    <WelcomePage/>
+  </LanguageProvider>
   )
 }
 export default App
