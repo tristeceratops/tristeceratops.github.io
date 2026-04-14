@@ -66,12 +66,12 @@
 	position: relative;
 	z-index: 1;
 	width: 100%;
-	margin: 0;
 	text-align: center;
 	font-size: clamp(3rem, 6vw, 8rem);
 	font-weight: 700;
 	font-family: var(--font-glitch);
 	line-height: 1.1;
+	isolation: isolate;
 	-webkit-text-stroke: 2px #ffffff;
 	background-image: linear-gradient(var(--label-gradient-angle),
 			var(--conic-ray-green) 0%,
@@ -83,6 +83,55 @@
 	color: transparent;
 	-webkit-text-fill-color: transparent;
 	animation: label-gradient-rotate var(--conic-motion-duration) linear infinite;
+}
+
+.welcome-text-label::before, .welcome-text-label::after {
+	content: attr(data-text);
+	position: absolute;
+	inset: 0;
+	line-height: inherit;
+	white-space: nowrap;
+	pointer-events: none;
+}
+
+.welcome-text-label::before {
+	-webkit-text-fill-color: currentColor;
+	z-index: -1;
+	animation: glitch1 3s infinite;
+}
+
+.welcome-text-label::after {
+	-webkit-text-fill-color: currentColor;
+	z-index: -2;
+	animation: glitch2 3s infinite;
+}
+
+@keyframes glitch1 {
+	0% { transform: translate(4px, 0); }
+	6% { transform: translate(-2px, -1px); }
+	12% { transform: translate(1px, -5px); }
+	18% { transform: translate(3px, 3px); }
+	24% { transform: translate(1px, -3px); }
+	28% { transform: translate(-1px, 1px); }
+	33.33% { transform: translate(0, 0); }
+	100% { transform: translate(0, 0); }
+}
+
+@keyframes glitch2 {
+	0% { transform: translate(-4px, 0); }
+	6% { transform: translate(2px, 1px); }
+	12% { transform: translate(-1px, 5px); }
+	18% { transform: translate(-3px, -3px); }
+	24% { transform: translate(-1px, 3px); }
+	28% { transform: translate(1px, -1px); }
+	33.33% { transform: translate(0, 0); }
+	100% { transform: translate(0, 0); }
+}
+
+@keyframes shake {
+  0% { transform: skewX(0deg); }
+  50% { transform: skewX(8deg); }
+  100% { transform: skewX(0deg); }
 }
 
 .welcomepage-content {
