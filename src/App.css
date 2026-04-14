@@ -4,9 +4,9 @@
   --conic-ray-purple: #b701ff;
   --conic-motion-duration: 24s;
   --conic-rotation: 0deg;
-  --label-gradient-angle: 145deg;
-  --ray-green-center: 108deg;
-  --ray-purple-center: 294deg;
+  --label-gradient-angle: 180deg;
+  --ray-green-center: 45deg;
+  --ray-purple-center: 225deg;
   --ray-green-width: 1deg;
   --ray-purple-width: 1deg;
   --ray-background-separation: 35deg;
@@ -78,8 +78,8 @@
   background-image: linear-gradient(
     var(--label-gradient-angle),
     var(--conic-ray-green) 0%,
-    var(--conic-ray-green) 45%,
-    var(--conic-ray-purple) 55%,
+    var(--conic-ray-green) 48%,
+    var(--conic-ray-purple) 52%,
     var(--conic-ray-purple) 100%
   );
   background-clip: text;
