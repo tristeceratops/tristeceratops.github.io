@@ -1,7 +1,7 @@
 export default function ConicRayBackground() {
 	return (
-		<div className="conic-ray-background">
-			<div className="conic-ray-background__gradient" />
+		<div className="background">
+			<div className="inner-background conic-ray-background__gradient" />
 		</div>
 	)
 }
