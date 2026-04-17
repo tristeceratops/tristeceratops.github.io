@@ -1,7 +1,7 @@
 import '../App.css'
 import ConicRayBackground from './ConicRayBackground'
-import WelcomeHeader from './WelcomeHeader'
-import MainFooter from './Footer'
+import MainHeader from './MainHeader'
+import MainFooter from './MainFooter'
 import WelcomeTextLabel from './WelcomeTextLabel'
 
 function WelcomePage() {
@@ -10,7 +10,7 @@ function WelcomePage() {
 	  <div className="welcomepage-background">
 		<ConicRayBackground />
 	  </div>
-	  <WelcomeHeader />
+	  <MainHeader />
 	  <section className="welcomepage-content">
 		<WelcomeTextLabel textKey="welcome" />
 	  </section>
