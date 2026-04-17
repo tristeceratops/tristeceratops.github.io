@@ -15,7 +15,6 @@ export default function MainFooter() {
 				<a
 					href="https://github.com/tristeceratops"
 					target="_blank"
-					rel="noreferrer"
 					aria-label="GitHub"
 					className="footer-link-icon"
 				>

@@ -1,7 +1,7 @@
 export const translations = {
   en: {
     home: 'Home',
-    about: 'About',
+    about: 'About me',
     projects: 'Projects',
     welcome: 'Welcome',
 	develop: 'Developped by Éric Woillard',
@@ -9,7 +9,7 @@ export const translations = {
   },	
   fr: {
     home: 'Accueil',
-    about: 'À propos',
+    about: 'À propos de moi',
     projects: 'Projets',
     welcome: 'Bienvenue',
 	develop: 'Développé par Éric Woillard',
