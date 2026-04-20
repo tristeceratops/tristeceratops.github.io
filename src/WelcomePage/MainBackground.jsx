@@ -190,7 +190,6 @@ export default function MainBackground() {
 	}, [])
 
 	const handleAnimationEnd = (id) => {
-		console.log("{" + id + "} animation ended")
 		setFloaters((previousFloaters) =>
 			previousFloaters.map((floater) =>
 				floater.id === id ? { ...floater, isDespawning: true } : floater,
@@ -199,7 +198,6 @@ export default function MainBackground() {
 	}
 
 	const handleTransitionEnd = (id, event) => {
-		console.log("{" + id + "} transition ended")
 		if (event.propertyName !== 'opacity') {
 			return
 		}
