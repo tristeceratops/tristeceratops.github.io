@@ -135,27 +135,62 @@ export default function MainBackground() {
 
 	useEffect(() => {
 		const spawnFloater = () => {
-			const { innerWidth: width, innerHeight: height } = window
+			const width = Math.max(
+				document.documentElement.scrollWidth,
+				document.body.scrollWidth,
+				window.innerWidth
+			)
+
+			const height = Math.max(
+				document.documentElement.scrollHeight,
+				document.body.scrollHeight,
+				window.innerHeight
+			)
 			const { colorA, colorB } = colorRangeRef.current
-			const newFloater = createFloater(nextIdRef.current, width, height, colorA, colorB)
+
+			const newFloater = createFloater(
+				nextIdRef.current,
+				width,
+				height,
+				colorA,
+				colorB
+			)
+
 			nextIdRef.current += 1
 
 			setFloaters((previousFloaters) => {
-				const nextFloaters = [...previousFloaters, newFloater]
-				return nextFloaters.slice(-MAX_FLOATERS)
+				let nextFloaters = [...previousFloaters, newFloater]
+
+				const aliveFloaters = nextFloaters.filter(
+					(floater) => !floater.isDespawning
+				)
+
+				if (aliveFloaters.length > MAX_FLOATERS) {
+					const oldestId = aliveFloaters[0].id
+
+					nextFloaters = nextFloaters.map((floater) =>
+						floater.id === oldestId
+							? { ...floater, isDespawning: true }
+							: floater
+					)
+				}
+
+				return nextFloaters
 			})
 		}
 
 		spawnFloater()
 
-		const intervalId = window.setInterval(spawnFloater, SPAWN_INTERVAL_MS)
+		const intervalId = window.setInterval(
+			spawnFloater,
+			SPAWN_INTERVAL_MS
+		)
 
-		return () => {
-			window.clearInterval(intervalId)
-		}
+		return () => window.clearInterval(intervalId)
 	}, [])
 
 	const handleAnimationEnd = (id) => {
+		console.log("{" + id + "} animation ended")
 		setFloaters((previousFloaters) =>
 			previousFloaters.map((floater) =>
 				floater.id === id ? { ...floater, isDespawning: true } : floater,
@@ -164,6 +199,7 @@ export default function MainBackground() {
 	}
 
 	const handleTransitionEnd = (id, event) => {
+		console.log("{" + id + "} transition ended")
 		if (event.propertyName !== 'opacity') {
 			return
 		}
@@ -193,8 +229,8 @@ export default function MainBackground() {
 							'--icon-size': `${floater.size}px`,
 							'--travel-duration': `${floater.duration}ms`,
 							'--icon-opacity': floater.opacity,
+							transition: 'opacity 1200ms linear',
 							opacity: floater.isDespawning ? 0 : floater.opacity,
-							transition: floater.isDespawning ? 'opacity 1200ms linear' : undefined,
 							'--icon-rotation-start': `${floater.rotationStart}deg`,
 							'--icon-rotation-end': `${floater.rotationEnd}deg`,
 						}}

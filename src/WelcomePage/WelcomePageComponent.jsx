@@ -6,12 +6,12 @@ import WelcomeTextLabel from './WelcomeTextLabel'
 
 function WelcomePage() {
   return (
-	<main className="welcomepage">
-	  <div className="welcomepage-background">
+	<main className="welcome-page">
+	  <div className="welcome-page__background">
 		<ConicRayBackground />
 	  </div>
 	  <MainHeader />
-	  <section className="welcomepage-content">
+	  <section className="welcome-page__content">
 		<WelcomeTextLabel textKey="welcome" />
 	  </section>
 	  <MainFooter/>
