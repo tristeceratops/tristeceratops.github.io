@@ -8,22 +8,22 @@ export default function MainFooter() {
 	const { t } = useLanguage()
 
 	return (
-		<footer className="page-footer">
+		<footer className="site-footer">
 			<h4>{t("develop")}</h4>
 			<h4></h4>
-			<div className='footer-links'>
+			<div className="site-footer__links">
 				<a
 					href="https://github.com/tristeceratops"
 					target="_blank"
 					aria-label="GitHub"
-					className="footer-link-icon"
+					className="site-footer__link"
 				>
 					<img src={githubLogo} alt="GitHub" />
 				</a>
 				<a
 					href="mailto:eric.woillard@gmail.com"
 					aria-label="Email"
-					className="footer-link-icon"
+					className="site-footer__link"
 				>
 					<img src={mailLogo} alt="Email" />
 				</a>

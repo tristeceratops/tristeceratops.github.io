@@ -8,13 +8,13 @@ export default function MainHeader() {
 
 	return (
 		<>
-			<header className="welcomepage-header" aria-label="Primary navigation">
-				<div className="welcomepage-header__buttons">
+			<header className="site-header" aria-label="Primary navigation">
+				<div className="site-header__buttons">
 					<NavLink
 						to="/"
 						end
 						className={({ isActive }) =>
-							`main-button-style ${isActive ? 'main-button-style--active' : ''}`.trim()
+							`nav-button ${isActive ? 'nav-button--active' : ''}`.trim()
 						}
 					>
 						{t('home')}
@@ -22,7 +22,7 @@ export default function MainHeader() {
 					<NavLink
 						to="/about"
 						className={({ isActive }) =>
-							`main-button-style ${isActive ? 'main-button-style--active' : ''}`.trim()
+							`nav-button ${isActive ? 'nav-button--active' : ''}`.trim()
 						}
 					>
 						{t('about')}
@@ -30,7 +30,7 @@ export default function MainHeader() {
 					<NavLink
 						to="/projects"
 						className={({ isActive }) =>
-							`main-button-style ${isActive ? 'main-button-style--active' : ''}`.trim()
+							`nav-button ${isActive ? 'nav-button--active' : ''}`.trim()
 						}
 					>
 						{t('projects')}
@@ -38,14 +38,14 @@ export default function MainHeader() {
 					<NavLink
 						to="/resume"
 						className={({ isActive }) =>
-							`main-button-style ${isActive ? 'main-button-style--active' : ''}`.trim()
+							`nav-button ${isActive ? 'nav-button--active' : ''}`.trim()
 						}
 					>
 						{t('resume')}
 					</NavLink>
 				</div>
 			</header>
-			<div className="welcomepage-language-toggle">
+			<div className="site-language-toggle">
 				<LanguageToggleButton />
 			</div>
 		</>

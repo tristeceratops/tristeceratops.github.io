@@ -21,9 +21,7 @@
 }
 
 /* Shared Page Shell */
-.welcomepage,
-.welcome-page,
-.about-page {
+.page {
 	position: relative;
 	width: 100%;
 	min-height: 100svh;
@@ -36,9 +34,7 @@
 	isolation: isolate;
 }
 
-.welcomepage-background,
-.welcome-page__background,
-.about-page__background {
+.page__background {
 	position: absolute;
 	inset: 0;
 	background: var(--conic-bg);
@@ -171,9 +167,7 @@
   100% { transform: skewX(0deg); }
 }
 
-.welcomepage-content,
-.welcome-page__content,
-.about-page__content {
+.page__content {
 	position: relative;
 	z-index: 1;
 	flex: 1;
@@ -186,8 +180,7 @@
 }
 
 /* About Page Content */
-.grid-wrapper,
-.about-page__grid {
+.about-grid {
 	width: min(100%, 1500px);
 	display: grid;
 	grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
@@ -198,27 +191,23 @@
 	margin-inline: auto;
 }
 
-.welcomepage-content--about,
-.about-page__content {
+.page__content--about {
 	justify-content: flex-start;
 	padding-top: clamp(7rem, 14vh, 13rem);
 }
 
-.welcomepage-content--about .grid-wrapper,
-.about-page__content .about-page__grid {
+.page__content--about .about-grid {
 	margin-top: clamp(2rem, 8vh, 7rem);
 }
 
-.left-pannel,
-.right-pannel,
-.about-page__column--left,
-.about-page__column--right {
+.about-column,
+.about-column--left,
+.about-column--right {
 	min-width: 0;
 	width: 100%;
 }
 
-.text-pannel,
-.about-page__panel {
+.about-panel {
 	padding: clamp(1.25rem, 2.8vw, 5rem);
 	border-radius: 12%;
 	background: linear-gradient(180deg, rgba(0, 0, 0, 0.533), rgba(0, 0, 0, 0.533), var(--color-icon-background1));
@@ -231,17 +220,16 @@
 	flex-direction: column;
 }
 
-.about-page__panel {
+.about-panel {
 	color: #ffffff;
 }
 
-.about-page__panel p {
+.about-panel p {
 	color: #ffffff;
 	line-height: 1.6;
 }
 
-.pannel-title,
-.about-page__panel-title {
+.about-panel__title {
 	position: relative;
 	top: -105px;
 	left: -85px;
@@ -258,20 +246,18 @@
 }
 
 @media (max-width: 900px) {
-	.grid-wrapper,
-	.about-page__grid {
+	.about-grid {
 		grid-template-columns: 1fr;
 		column-gap: 0;
 	}
 
-	.welcomepage-content--about,
-	.about-page__content {
+	.page__content--about {
 		padding-top: clamp(6.5rem, 12vh, 9rem);
 	}
 }
 
 /* Shared Header */
-.welcomepage-header {
+.site-header {
 	position: absolute;
 	top: clamp(16px, 2.6vw, 32px);
 	left: 50%;
@@ -287,7 +273,7 @@
 	-webkit-backdrop-filter: blur(8px);
 }
 
-.welcomepage-header::before {
+.site-header::before {
 	content: '';
 	position: absolute;
 	inset: 0;
@@ -304,7 +290,7 @@
 	mask-composite: exclude;
 }
 
-.welcomepage-header__buttons {
+.site-header__buttons {
 	position: relative;
 	z-index: 1;
 	display: flex;
@@ -313,7 +299,7 @@
 	gap: 0.5rem;
 }
 
-.welcomepage-language-toggle {
+.site-language-toggle {
 	position: fixed;
 	top: clamp(16px, 2.6vw, 32px);
 	right: clamp(16px, 2.6vw, 32px);
@@ -321,7 +307,7 @@
 }
 
 /* Shared Buttons */
-.main-button-style {
+.nav-button {
 	min-width: 3.25rem;
 	padding: 0.5rem 0.9rem;
 	display: inline-flex;
@@ -339,7 +325,7 @@
 }
 
 /* Shared Footer */
-.page-footer {
+.site-footer {
 	position: relative;
 	z-index: 1;
 	display: flex;
@@ -352,21 +338,21 @@
 	color: #ffffff;
 }
 
-.page-footer h4 {
+.site-footer h4 {
 	color: #ffffff;
 }
 
-.footer-links {
+.site-footer__links {
 	position: relative;
 	display: flex;
 	justify-content: space-evenly;
 }
 
-.footer-links>a {
+.site-footer__links > a {
 	padding: 0 clamp(8px, 1vw, 12px) 0 clamp(8px, 1vw, 12px);
 }
 
-.footer-link-icon {
+.site-footer__link {
 	display: inline-flex;
 	align-items: center;
 	justify-content: center;
@@ -374,20 +360,20 @@
 	transition: transform 0.2s ease, opacity 0.2s ease;
 }
 
-.footer-link-icon img {
+.site-footer__link img {
 	width: 100%;
 	height: 100%;
 	object-fit: contain;
 	filter: invert(1);
 }
 
-.footer-link-icon:hover {
+.site-footer__link:hover {
 	transform: translateY(-2px) scale(1.06);
 	opacity: 0.9;
 }
 
 /* Shared Interactive States */
-.main-button-style:hover {
+.nav-button:hover {
 	border-color: #ffffff55;
 	animation: main-button-border-flow 1.8s linear infinite;
 	background:
@@ -398,7 +384,7 @@
 	background-position: 0 0, 0% 50%;
 }
 
-.main-button-style--active {
+.nav-button--active {
 	border-color: #ffffffaa;
 	animation: main-button-border-flow 1.8s linear infinite;
 	background:
@@ -413,7 +399,7 @@
 		0 0 20px #b701ff35;
 }
 
-.main-button-style--active:hover {
+.nav-button--active:hover {
 	box-shadow:
 		0 0 0 1px #ffffff55,
 		0 0 16px #44ff0080,

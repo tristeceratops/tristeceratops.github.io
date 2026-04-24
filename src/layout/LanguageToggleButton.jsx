@@ -6,7 +6,7 @@ export default function LanguageToggleButton() {
   return (
     <button
       type="button"
-      className="main-button-style"
+      className="nav-button"
       onClick={toggleLanguage}
       aria-label={nextLanguageLabel}
     >
