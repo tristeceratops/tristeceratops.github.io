@@ -105,18 +105,9 @@
   --font-mono: ui-monospace, Consolas, monospace;
   --font-glitch: 'Doctor Glitch', var(--font-sans);
 
-
-  --text: #111827;
-  --bg: #ffffff;
-  --border: #e5e7eb;
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --text: #e5e7eb;
-    --bg: #111827;
-    --border: #374151;
-  }
+  --text: #e5e7eb;
+  --bg: #101010;
+  --border: #374151;
 }
 
 * ,

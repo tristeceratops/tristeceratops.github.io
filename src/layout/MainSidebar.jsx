@@ -3,13 +3,20 @@ import { NavLink } from 'react-router-dom'
 import { useLanguage } from '../i18n/LanguageContext'
 import LanguageToggleButton from './LanguageToggleButton'
 
-export default function MainHeader() {
+export default function MainSidebar({ isOpen, onClose }) {
 	const { t } = useLanguage()
 
 	return (
 		<>
-			<header className="site-header" aria-label="Primary navigation">
-				<div className="site-header__buttons">
+			<header className={`site-sidebar ${isOpen ? 'site-sidebar--open' : ''}`} aria-label="Primary navigation">
+				<button
+					className="sidebar-toggle-close"
+					onClick={onClose}
+					aria-label="Close sidebar"
+				>
+					✕
+				</button>
+				<div className="site-sidebar__buttons">
 					<NavLink
 						to="/"
 						end
@@ -44,10 +51,10 @@ export default function MainHeader() {
 						{t('resume')}
 					</NavLink>
 				</div>
+				<div className="site-sidebar__language-toggle">
+					<LanguageToggleButton />
+				</div>
 			</header>
-			<div className="site-language-toggle">
-				<LanguageToggleButton />
-			</div>
 		</>
 	)
 }
