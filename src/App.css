@@ -190,12 +190,11 @@
 	align-items: center;
 	justify-content: center;
 	gap: 1.5rem;
-	padding: clamp(5rem, 12vh, 12rem) 1.5rem 1.5rem;
 }
 
 /* About Page Content */
 .about-grid {
-	width: min(100%, 1500px);
+	width: min(75%, 1500px);
 	display: grid;
 	grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
 	column-gap: 20%;
@@ -225,8 +224,8 @@
 	padding: clamp(1.25rem, 2.8vw, 5rem);
 	border-radius: 12%;
 	background: linear-gradient(180deg, rgba(0, 0, 0, 0.533), rgba(0, 0, 0, 0.533), var(--color-icon-background1));
-	backdrop-filter: blur(10px);
-	-webkit-backdrop-filter: blur(10px);
+	backdrop-filter: blur(6px);
+	-webkit-backdrop-filter: blur(6px);
 	box-shadow: 5px 5px 50px 1px var(--color-icon-background1);
 	font-family: "Vibrocentric";
 	min-height: 300px;
@@ -283,8 +282,6 @@
 	justify-content: flex-start;
 	padding: 1rem;
 	background: #00000099;
-	backdrop-filter: blur(8px);
-	-webkit-backdrop-filter: blur(8px);
 	z-index: 3;
 	transition: width 0.3s ease, visibility 0.3s ease;
 	overflow-y: auto;
@@ -296,6 +293,13 @@
 	visibility: visible;
 	pointer-events: auto;
 	width: 20%;
+}
+
+.site-sidebar:not(.site-sidebar--open) > * {
+	opacity: 0;
+	visibility: hidden;
+	pointer-events: none;
+	transition: none;
 }
 
 .site-sidebar__buttons {

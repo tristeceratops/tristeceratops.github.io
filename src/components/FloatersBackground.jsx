@@ -64,6 +64,22 @@ function colorizeSvg(svgMarkup, color) {
 		.replaceAll('#000000', color)
 }
 
+function getFloaterBounds() {
+	const outletWrapper = document.querySelector('.outlet-wrapper')
+
+	if (outletWrapper) {
+		return {
+			width: Math.max(outletWrapper.scrollWidth, outletWrapper.clientWidth, window.innerWidth),
+			height: Math.max(outletWrapper.scrollHeight, outletWrapper.clientHeight, window.innerHeight),
+		}
+	}
+
+	return {
+		width: Math.max(document.documentElement.scrollWidth, document.body.scrollWidth, window.innerWidth),
+		height: Math.max(document.documentElement.scrollHeight, document.body.scrollHeight, window.innerHeight),
+	}
+}
+
 function createFloater(id, width, height, colorA, colorB) {
 	const side = Math.floor(randomBetween(0, 4))
 	let startX = 0
@@ -114,7 +130,7 @@ function createFloater(id, width, height, colorA, colorB) {
 	}
 }
 
-export default function MainBackground() {
+export default function FloatersBackground() {
 	const [floaters, setFloaters] = useState([])
 	const nextIdRef = useRef(1)
 	const colorRangeRef = useRef({
@@ -135,17 +151,7 @@ export default function MainBackground() {
 
 	useEffect(() => {
 		const spawnFloater = () => {
-			const width = Math.max(
-				document.documentElement.scrollWidth,
-				document.body.scrollWidth,
-				window.innerWidth
-			)
-
-			const height = Math.max(
-				document.documentElement.scrollHeight,
-				document.body.scrollHeight,
-				window.innerHeight
-			)
+			const { width, height } = getFloaterBounds()
 			const { colorA, colorB } = colorRangeRef.current
 
 			const newFloater = createFloater(

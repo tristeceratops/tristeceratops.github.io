@@ -1,11 +1,11 @@
 import '../App.css'
-import MainBackground from '../components/FloatersBackground'
+import FloatersBackground from '../components/FloatersBackground'
 
 function AboutPage() {
 	return (
 		<main className="page page--about">
 			<div className="page__background">
-				<MainBackground />
+				<FloatersBackground />
 			</div>
 			<section className="page__content page__content--about">
 				<div className="about-grid">
